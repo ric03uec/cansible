@@ -5,11 +5,9 @@ env:
 
 build:
   ci:
-    - export CANSIBLE_IMAGE="$HUB_REPO:$BUILD_NUMBER"
-    - echo $CANSIBLE_IMAGE
+    - ./build.sh
 
 branches:
   only:
     - devel
     - master
-    - release
