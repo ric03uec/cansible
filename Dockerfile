@@ -24,8 +24,9 @@ RUN \
 	apk add openssh-client && \
 	apk add curl
 
-RUN mkdir -p /ansible/playbooks \
-		mkdir -p /ansible/configs
+RUN \
+	mkdir -p /ansible/playbooks && \
+	mkdir -p /ansible/configs
 
 RUN pip install ansible==$ANSIBLE_VERSION
 

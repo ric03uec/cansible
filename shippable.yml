@@ -1,3 +1,10 @@
-language: none
+language: python
 
-## Shippable.yml to automatically build and push different images
+env:
+  - HUB_REPO=ric03uec/cansible
+
+build:
+  ci:
+    - export CANSIBLE_IMAGE="$HUB_REPO:$BUILD_NUMBER"
+    - echo $CANSIBLE_IMAGE
+
