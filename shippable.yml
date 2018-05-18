@@ -10,5 +10,6 @@ build:
 
 branches:
   only:
+    - devel
     - master
     - release
