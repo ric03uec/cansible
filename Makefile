@@ -14,7 +14,7 @@ test:
 install:
 ifndef SHELLCHECK
 	$(warning shellcheck not installed, installing it)
-	sudo apt-get -y shellcheck
+	sudo apt-get install -y shellcheck
 else
 	$(info *** shellcheck installed, skipping ***)
 endif
