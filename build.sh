@@ -29,7 +29,7 @@ __build_release_image() {
 }
 
 main() {
-  if [ -z "$IS_PULL_REQUEST" ] && [ "$IS_PULL_REQUEST" == true ]; then
+  if [ ! -z "$IS_PULL_REQUEST" ] && [ "$IS_PULL_REQUEST" == true ]; then
     echo "Pull request build, skipping image build and push"
   else
     __build_master_image
