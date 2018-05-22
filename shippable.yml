@@ -11,7 +11,7 @@ build:
 integrations:
   hub:
     - integrationName: ric03uec-dockerhub
-      type: dockerRegistryLogin
+      type: docker
 
 branches:
   only:
