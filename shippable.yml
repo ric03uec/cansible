@@ -5,8 +5,8 @@ env:
 
 build:
   ci:
-    - make test
-    - make build
+    - make install
+    - make
 
 branches:
   only:
