@@ -33,4 +33,7 @@ RUN \
 
 ADD ansible.cfg /etc/ansible/ansible.cfg
 
+## Export all configuration overrides here
+ENV ANSIBLE_FORCE_COLOR=true
+
 ENTRYPOINT ["/usr/bin/ansible-playbook"]
