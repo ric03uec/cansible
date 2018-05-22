@@ -5,7 +5,8 @@ env:
 
 build:
   ci:
-    - ./build.sh
+    - make install
+    - make
 
 branches:
   only:
