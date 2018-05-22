@@ -1,7 +1,7 @@
 SHELLCHECK := $(shell command -v shellcheck 2> /dev/null)
 
 .PHONY: all
-all: test build
+all: install test
 
 build:
 	$(info *** Building docker images ***)
