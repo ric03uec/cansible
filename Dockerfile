@@ -2,6 +2,7 @@ FROM alpine:3.7
 
 ## https://pypi.org/project/ansible/#history
 ENV ANSIBLE_VERSION=2.5.2
+ENV ANSIBLE_CONFIG=/etc/ansible/ansible.cfg
 
 RUN apk update
 
@@ -24,10 +25,12 @@ RUN \
 	apk add openssh-client && \
 	apk add curl
 
-RUN \
-	mkdir -p /ansible/playbooks && \
-	mkdir -p /ansible/configs
-
 RUN pip install ansible==$ANSIBLE_VERSION
+
+RUN \
+	mkdir -p /ansible && \
+	mkdir -p /etc/ansible
+
+ADD ansible.cfg /etc/ansible/ansible.cfg
 
 ENTRYPOINT ["/usr/bin/ansible-playbook"]
