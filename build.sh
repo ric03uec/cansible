@@ -1,15 +1,20 @@
 #!/bin/bash
 set -e
 
-__build_branch_image() {
+__build_master_image() {
   echo "Building branch image"
+  if [ -z "$HUB_REPO" ]; then
+    echo "HUB_REPO required to build image, exiting"
+    exit 1
+  fi
+
   if [ "$BRANCH" == "master" ]; then
-    export CANSIBLE_IMAGE="$HUB_REPO:$BUILD_NUMBER"
-    echo "$CANSIBLE_IMAGE"
-    echo "docker build image"
-    echo "docker push image"
+    export CANSIBLE_IMAGE="$HUB_REPO:master"
+    echo "Building $CANSIBLE_IMAGE"
+    sudo docker build --no-cache --tag "$CANSIBLE_IMAGE" -f Dockerfile .
+    sudo docker push "$CANSIBLE_IMAGE"
   else
-    echo "Building non-master branch, skipping image push"
+    echo "Skipping non-master branch image build and push"
   fi
 }
 
@@ -24,7 +29,7 @@ __build_release_image() {
 }
 
 main() {
-  __build_branch_image
+  __build_master_image
   __build_release_image
 }
 

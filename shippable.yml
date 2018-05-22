@@ -5,8 +5,13 @@ env:
 
 build:
   ci:
-    - make install
     - make
+    - make build
+
+integrations:
+  hub:
+    - integrationName: ric03uec-dockerhub
+      type: dockerRegistryLogin
 
 branches:
   only:
