@@ -1,8 +1,8 @@
 FROM alpine:3.7
 
 ## https://pypi.org/project/ansible/#history
-ENV ANSIBLE_VERSION=2.5.2
 ENV ANSIBLE_CONFIG=/etc/ansible/ansible.cfg
+ADD . /cansible
 
 RUN apk update
 
@@ -16,8 +16,7 @@ RUN \
 	apk add py-jinja2 && \
 	apk add py-boto && \
 	apk add py-setuptools && \
-	apk add py-yaml && \
-	apk add py-libcloud
+	apk add py-yaml
 
 RUN \
 	apk add make && \
@@ -25,7 +24,8 @@ RUN \
 	apk add openssh-client && \
 	apk add curl
 
-RUN pip install ansible==$ANSIBLE_VERSION
+RUN \
+	pip install -r /cansible/requirements.txt
 
 RUN \
 	mkdir -p /ansible && \
@@ -35,5 +35,6 @@ ADD ansible.cfg /etc/ansible/ansible.cfg
 
 ## Export all configuration overrides here
 ENV ANSIBLE_FORCE_COLOR=true
+RUN rm -rf /cansible
 
 ENTRYPOINT ["/usr/bin/ansible-playbook"]
