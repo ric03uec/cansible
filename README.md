@@ -5,11 +5,11 @@
 ## motivation
 after trying out a **lot** of [ansible](https://github.com/ansible/ansible)
 containers that were missing one or more functionalities I needed, I decided to
-come up with this solution. The objective of this project are
-- to have a drop-in replacement for `ansible-playbook` command with sane (overridable) defaults
-- to get rid of all dependency issues when installing ansible on the host by
+come up with this solution. The objective of this project are to
+- have a drop-in replacement for `ansible-playbook` command with sane (and overridable) defaults
+- get rid of all dependency issues when installing ansible on the host by
   having `docker` as the only dependency
-- to follow best practices to create playbooks as [recommended](http://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) by `ansible`
+- follow best practices to create playbooks as [recommended](http://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html) by `ansible`
 
 ## usage
 
