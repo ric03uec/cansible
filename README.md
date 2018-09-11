@@ -27,3 +27,20 @@ come up with this solution. The objective of this project are to
 $ cd /my/project/
 $ docker run -v $(pwd):/ansible ric03uec/cansible:master playbook.yml
 ```
+
+### Using keys
+
+- add all the keys in `keys` directory in the project root. Since the project
+  folder is mounted at path `/ansible` inside the container, the keys will be
+  available to the playbooks and inventory file(s).
+
+
+```
+/my/project/
+            |_ playbook.yml
+            /keys/
+                |_ mykey.public
+                |_ mykey.private
+```
+
+- these can be used in the inventory file using `ansible_ssh_private_key_file=/ansible/keys/mykey.private`
